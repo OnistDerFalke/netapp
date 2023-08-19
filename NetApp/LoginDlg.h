@@ -23,5 +23,16 @@ public:
 	afx_msg void OnUsernameEdit();
 	afx_msg void OnStnClickedErrormsg();
 	afx_msg void OnClose();
+
+	bool LoginDlg::CheckUsernameMeetsCriteria();
+	bool LoginDlg::CheckAvatarMeetsCriteria();
+
 	CEdit m_UsernameControl;
+	CStatic m_AvatarControl;
+	
+	afx_msg void OnBnClickedAvatar();
+	afx_msg void OnStnClickedAvatarimg();
+
+	CString d_username;
+	CImage d_avatar;
 };
