@@ -54,6 +54,9 @@
 #define IDC_BUTTON1                     1008
 #define IDC_AVATAR                      1008
 #define IDC_AVATARIMG                   1009
+#define IDC_MESSAGE_INPUT				1010
+#define IDC_MESSAGE_SEND				1011
+#define IDC_SCROLLBAR                  1012
 
 // Next default values for new objects
 // 

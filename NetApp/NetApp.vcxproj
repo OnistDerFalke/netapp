@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ChatMessage.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoginDlg.h" />
     <ClInclude Include="MainFrm.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChatMessage.cpp" />
     <ClCompile Include="LoginDlg.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="NetApp.cpp" />
