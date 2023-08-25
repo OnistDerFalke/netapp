@@ -85,6 +85,7 @@ BOOL CNetAppApp::InitInstance()
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;
 
+	//obowiazkowe okno logowania
 	LoginDlg loginDlg;
 	INT_PTR loginResponse = loginDlg.DoModal();
 	if (loginResponse == 2) return FALSE;

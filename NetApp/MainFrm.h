@@ -1,11 +1,11 @@
-
-// MainFrm.h : interface of the CMainFrame class
-//
-
 #pragma once
 #include "ChatMessage.h"
+#include "ConnectionManager.h"
+#include "SerializableChatMessage.h"
 #include <vector>
+#include <thread>
 
+class ConnectionManager;
 class CMainFrame : public CFrameWndEx
 {
 public:
@@ -16,6 +16,7 @@ public:
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
 	void SetUser(CString username, CImage avatar);
+	void UpdateMessagesWindow(CRect editRect);
 #endif
 	CImage m_UserAvatar;
 	CString m_UserName;
@@ -31,17 +32,16 @@ protected:
 	CEdit m_MessageInputControl;
 	CButton m_SendButton;
 	CScrollBar m_Scrollbar;
-	CStatic* m_MessagesTexts;
-	CImage* m_MessagesAvatars;
+	std::vector<CStatic*> m_MessagesTexts;
+	std::vector<CStatic*> m_MessagesAvatars;
 	
 private:
 	void OnBnSendClick();
 	void UpdateMessageInputPosition(CRect editRect);
 	void UpdateMessageSendButtonPosition(CRect editRect);
 	void UpdateScrollBarSize(CRect editRect);
-	void UpdateMessagesWindow();
 	void OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 	std::vector<ChatMessage> messages;
+	ConnectionManager* connectionManager;
+	std::thread listeningThread;
 };
-
-

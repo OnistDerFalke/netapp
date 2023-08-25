@@ -83,7 +83,7 @@ void LoginDlg::OnBnClickedAvatar()
 
 	if (fileDialog.DoModal() == IDOK)
 	{
-		//avatar's path from file
+		//sciezka do obrazku awatara
 		CString filePath = fileDialog.GetPathName();
 
 		CImage image;
@@ -92,15 +92,17 @@ void LoginDlg::OnBnClickedAvatar()
 
 		m_AvatarControl.GetClientRect(rect);
 
-		//clearing control before inserting an image
+		//czyszczenie przed wstawieniem obrazka
 		pDC->FillSolidRect(rect, GetSysColor(COLOR_BTNFACE)); 
 
-		//inserting an image to the control
+		//wstawienie obrazka do kontrolki (teoretycznie dziala ale z sama zawartoscia obrazka dzieja sie dziwne rzeczy)
+		/*nie jestem dumny z tego kodu, wiem ze jest chaotycznie, ale niestety mialem w ostatnim tygodniu troche malo czasu zeby usiasc nad nim na dluzej i tez duzo dziwnych
+		i niepotrzebnych rzeczy sie stworzylo przy generowaniu projektu, niektore usunalem, innych sie balem, ze cos popsuje, przez co mogl sie zrobic lekki chaos*/
 		if (image.Load(filePath) == S_OK)
 		{
 			d_avatar = image;
-			image.Draw(pDC->GetSafeHdc(), rect.left, rect.top, rect.Width(), rect.Height(),
-				0, 0, image.GetWidth(), image.GetHeight());
+			d_avatar.Draw(pDC->GetSafeHdc(), rect.left, rect.top, rect.Width(), rect.Height(),
+				0, 0, d_avatar.GetWidth(), d_avatar.GetHeight());
 			m_AvatarControl.InvalidateRect(rect);
 			m_AvatarControl.ReleaseDC(pDC);
 		}
@@ -113,6 +115,8 @@ void LoginDlg::OnStnClickedAvatarimg()
 	
 }
 
+
+//Sprawdzanie czy obrazek i nazwa uzytkownika sa w porzadku
 
 bool LoginDlg::CheckUsernameMeetsCriteria()
 {

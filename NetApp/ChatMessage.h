@@ -1,14 +1,12 @@
 #pragma once
 #include <ctime>
 
+//Analogiczna klasa do SCM ale zmienne przechowywane w normalnych typach, nie stringach
 class ChatMessage
 {
 public:
-	ChatMessage(CString message, std::time_t sendTime, CImage avatar, CString username, bool incoming);
+	ChatMessage(CString message, CImage avatar);
 	CString message;
-	std::time_t sendTime;
 	CImage avatar;
-	CString username;
-	bool incoming;
 };
 
